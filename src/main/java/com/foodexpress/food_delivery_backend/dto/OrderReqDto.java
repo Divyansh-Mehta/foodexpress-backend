@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class OrderReqDto {
-    private Long RestaurantId;
+    private Long restaurantId;
     private Address deliveryAddress;
 }

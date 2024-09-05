@@ -31,7 +31,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Order> orders;
 
-    @JsonIgnore
     @ManyToMany
     private List<Restaurant> favorites;
 

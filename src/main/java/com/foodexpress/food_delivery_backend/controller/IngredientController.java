@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/admin/ingredients")
+@RequestMapping("/api/admin/ingredients")
 public class IngredientController {
 
     private final IngredientsService ingredientsService;
@@ -30,7 +30,7 @@ public class IngredientController {
     }
 
     @PostMapping
-    public ResponseEntity<Ingredient> createIngredientCategory(
+    public ResponseEntity<Ingredient> createIngredient(
             @RequestBody CreateIngredientReqDto ingredientReqDto
     ) throws Exception{
         Ingredient  ingredient = ingredientsService.createIngredientItem(ingredientReqDto.getRestaurantId(), ingredientReqDto.getName(), ingredientReqDto.getCategoryId());

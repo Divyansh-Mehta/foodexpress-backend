@@ -1,10 +1,13 @@
 package com.foodexpress.food_delivery_backend.service.impl;
 
+import com.foodexpress.food_delivery_backend.model.Restaurant;
 import com.foodexpress.food_delivery_backend.model.User;
 import com.foodexpress.food_delivery_backend.repository.UserRepository;
 import com.foodexpress.food_delivery_backend.security.JwtProvider;
 import com.foodexpress.food_delivery_backend.service.UserService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,5 +33,15 @@ public class UserServiceImpl implements UserService {
             throw new Exception("User not found");
         }
         return user;
+    }
+
+    @Override
+    public List<Restaurant> findUserFavRestaunrat(String jwt) throws Exception {
+        User user = findUserByJwtToken(jwt);
+        List<Restaurant> restaurants = user.getFavorites();
+        for (Restaurant restaurant: restaurants){
+            restaurant.setOwner(null);
+        }
+        return restaurants;
     }
 }
